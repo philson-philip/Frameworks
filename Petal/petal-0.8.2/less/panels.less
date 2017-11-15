@@ -1,0 +1,97 @@
+// * ================================= *
+// *  Panels
+// * ================================= *
+
+// import dependencies
+@import (reference) 'color-palette.less';
+@import (reference) 'mixins.less';
+
+.panel, .card {
+	background-color: #fff;
+	box-shadow: 0 1px 4px rgba(0,0,0,.05);
+	transition: background-color .15s, box-shadow .15s, color .15s;
+
+	& when (@panel-border-radius > 0) {
+		border-radius: @panel-border-radius;
+	}
+
+	&.hover-em:hover {
+		.drop-shadow-light;
+	}
+
+	& when (@include-dark = true) {
+		.dark &, &.ondark {
+			background-color: #444;
+			box-shadow: 0 1px 4px rgba(0,0,0,.1);
+
+			&.hover-em:hover {
+				.drop-shadow-light;
+			}
+		}
+	}
+}
+
+span.label,
+span.badge {
+	display: inline-block;
+	min-width: 1.5em;
+	background-color: @gray;
+	color: #fff;
+	padding: 0.2em 0.5em;
+	font-size: 0.8em;
+	font-weight: bold;
+	letter-spacing: 0;
+	text-transform: none;
+	text-align: center;
+
+	&.accent {
+		background-color: @primary-accent-color;
+	}
+
+	&.okay {
+		background-color: @okay-color;
+	}
+
+	&.warning {
+		background-color: @warning-color;
+	}
+
+	&.danger {
+		background-color: @danger-color;
+	}
+
+	&.white {
+		background-color: @white;
+		color: @base-font-color;
+
+		&.accent {
+			color: @primary-accent-color;
+		}
+
+		&.okay {
+			color: @okay-color;
+		}
+
+		&.warning {
+			color: @warning-color;
+		}
+
+		&.danger {
+			color: @danger-color;
+		}
+	}
+}
+
+span.label {
+	font-style: italic;
+
+	& when (@label-border-radius > 0) {
+		border-radius: @label-border-radius;
+	}
+}
+
+span.badge {
+	& when (@badge-border-radius > 0) {
+		border-radius: @badge-border-radius;
+	}
+}

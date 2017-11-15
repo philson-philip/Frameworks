@@ -1,0 +1,51 @@
+// * ================================= *
+// *  Global Mixins
+// * ================================= *
+
+// import dependencies
+@import (reference) 'variables.less';
+
+// color generate mixin
+.colorset(@input-color) {
+	@color: @input-color;
+	@color-l1: screen(@color,@l1-additive);
+	@color-l2: screen(@color,@l2-additive);
+	@color-d1: multiply(@color,@d1-additive);
+	@color-d2: multiply(@color,@d2-additive);
+}
+
+
+/* drop shadow mixin */
+@drop-shadow: 0 2px 4px rgba(0,0,0,0.2);
+.drop-shadow { 
+	box-shadow: @drop-shadow; 
+}
+
+@drop-shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+.drop-shadow-light { 
+	box-shadow: @drop-shadow-light; 
+}
+
+@drop-shadow-lighter: 0 1px 4px rgba(0,0,0,.05);
+.drop-shadow-lighter { 
+	box-shadow: @drop-shadow-lighter; 
+}
+
+@drop-shadow-deep: 0 5px 15px rgba(0,0,0,0.2);
+.drop-shadow-deep { 
+	box-shadow: @drop-shadow-deep; 
+}
+
+
+/* clearfix mixin */
+.cf {
+	&:before,
+	&:after {
+	    content: " ";
+	    display: table;
+	}
+
+	&:after {
+	    clear: both;
+	}
+}

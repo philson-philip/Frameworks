@@ -1,0 +1,859 @@
+// * ================================= *
+// *  Buttons
+// * ================================= *
+
+// import dependencies
+@import (reference) 'variables.less';
+@import (reference) 'color-palette.less';
+@import (reference) 'mixins.less';
+@import (reference) 'petalicon.less';
+@import (reference) 'z-index.less';
+
+/* common caret */
+.caret {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	height: 0;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	border-top: 4px solid #fff;
+
+	& when (@btn-disable-transition = false) {
+		transition: 0.2s border-color, 0.3s transform;
+	}
+}
+
+.caret-right {
+	position: relative;
+	display: inline-block;
+	bottom: 2px;
+	width: 0;
+	height: 0;
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 4px solid #fff;	
+}
+
+/* default button */
+.btn {
+	position: relative;
+
+	display: inline-block;
+	margin: 0;
+	padding: (10px - @btn-border-width) 20px;
+
+	font-size: @btn-font-size; //0.8em
+	font-weight: @btn-font-weight;
+	text-align: center;
+	text-decoration: none !important;
+	text-transform: uppercase;
+	white-space: nowrap;
+	letter-spacing: @btn-letter-spacing;
+	line-height: @btn-line-height;
+	vertical-align: middle;
+
+	color: #fff;
+	background: none;
+	background-color: @primary-accent-color;
+	cursor: pointer;
+	border: @btn-border-width solid transparent;
+	border-radius: 0;
+	outline: none !important;
+	
+	// transitions
+	& when (@btn-disable-transition = false) {
+		transition-property: background, border-color, color, box-shadow, opacity;
+		transition-duration: .15s;
+	}
+	
+	// border-radius
+	& when (@btn-border-radius > 0) {
+		border-radius: @btn-border-radius;
+	}
+
+	&:hover {
+		& when (@btn-disable-shadows = false) {
+			box-shadow: 0 2px 4px -2px rgba(0,0,0,.2);
+		}
+	}
+
+	&:focus {
+		box-shadow: 0 0px 1px rgba(0,0,0,.2);
+	}
+
+	&:active {
+		& when (@btn-disable-shadows = false) {
+			box-shadow: 0 0px 1px rgba(0,0,0,.2);
+		}
+		transition-duration: 0s;
+	}
+	
+	// border-radius when active
+	& when (@btn-border-radius > 0) {
+		.active > &[data-toggle] {
+			border-radius: @btn-border-radius @btn-border-radius 0 0;
+		}
+	}
+
+	&.active, 
+	.active > &[data-toggle] {
+		z-index: @btn-active-z-index;
+		perspective: 500;
+	}
+	
+	.caret {
+		transform-style: preserve-3d;
+	}
+
+	.active[data-dropdown-state="open"] > & .caret {
+		transform: rotateX(180deg);
+	}
+
+	.petalicon {
+		line-height: 0;
+	}
+	
+	// compact size
+	&.compact {
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
+		line-height: 1;
+	}
+}
+
+// static palette button styles generator mixin
+.generate-btn(@base-color: 'primary-accent-color'; @option: 'auto';) {
+	
+	// inner mixin
+	.generate-btn-styles() {
+		// default filled style
+		& {
+			color: @text-color;
+			background-color: @btn-color;
+			
+			// for toggle button
+			&.active, &.hollow.active,
+			:checked + label &,
+			:checked + label &.hollow {
+				color: @text-color;
+				background-color: @btn-color-l1;
+				border-color: @btn-color-d2;
+
+				&:hover {
+					color: @text-color;
+				}
+				&:focus {
+					color: @text-color;
+					border-color: @btn-color-d1;
+					box-shadow: 0 0px 2px rgba(0,0,0,.3);
+				}
+			}
+			
+			&:hover {
+				background-color: @btn-color-l1;
+				border-color: @btn-color-d1;
+			}
+
+			&:focus {
+				border-color: @btn-color-d2;
+			}
+
+			&:active {
+				background-color: @btn-color-d1;
+				border-color: @btn-color-d2;
+			}
+
+			.caret {
+				border-top-color: @text-color;
+			}
+
+		}
+
+		&.disabled,
+		&:disabled,
+		fieldset[disabled] &,
+		:disabled + label & {
+			color: @text-color !important;
+			background-color: @btn-color !important;
+			border-color: transparent !important;
+		}
+
+		& when (@include-dark = true) {
+			// on dark background
+			&.ondark, .dark & {
+
+				// for toggle button
+				&.active {
+					color: @text-color;
+					background-color: @btn-color-d1;
+					border-color: @btn-color-l2;
+
+					&:hover {
+						border-color: @btn-color-l2;
+						background-color: @btn-color;
+					}
+					&:focus {
+						color: @text-color;
+						border-color: @btn-color-d1;
+						box-shadow: 0 0px 2px rgba(0,0,0,.3);
+					}
+				}
+
+				&:hover {
+					background-color: @btn-color-d1;
+					border-color: @btn-color-l1;
+				}
+
+				&:focus {
+					border-color: @btn-color-l2;
+				}
+
+				&:active {
+					background-color: @btn-color-d2;
+					border-color: @btn-color;
+				}
+			}
+			
+			// for segmented button active state on dark
+			.dark :checked + label &,
+			.dark :checked + label &.hollow {
+				color: @text-color;
+				background-color: @btn-color-d1;
+				border-color: @btn-color-l2;
+
+				&:hover {
+					border-color: @btn-color-l2;
+					background-color: @btn-color;
+				}
+			}
+		}
+
+		// hollow style
+		&.hollow {
+			color: @btn-color;
+			border-color: @btn-color;
+			background: none;
+
+			.caret {
+				border-top-color: @btn-color; 
+			}
+			
+			&:hover {
+				color: @text-color;
+				border-color: @btn-color;
+				background-color: @btn-color;
+			}
+
+			&:focus {
+				color: @btn-color-d2;
+				border-color: @btn-color-d2;
+			}
+			&:focus:hover {
+				color: @text-color;
+			}
+
+			&:active {
+				color: @text-color;
+				background-color: @btn-color-d1;
+				border-color: @btn-color-d2;
+			}
+			
+			& when (@include-dark = true) {
+				.dark &:focus {
+					color: @btn-color-l1;
+					border-color: @btn-color-l1;
+				}
+				.dark &:focus:hover {
+					color: @text-color;
+				}
+				.dark &:active {
+					border-color: @btn-color-l1;
+				}
+			}
+
+			&:hover, &:active,
+			&.active, .active > &[data-toggle="dropdown"] {
+				.caret {
+					border-top-color: @text-color; 
+				}
+			} 
+		}
+
+		&.hollow.disabled,
+		&.hollow:disabled,
+		fieldset[disabled] &.hollow,
+		:disabled + label &.hollow {
+			color: @btn-color !important;
+			border-color: @btn-color !important;
+			background: none !important;
+		}
+
+		.active > &[data-toggle="dropdown"],
+		.active > &[data-toggle="dropdown"]:hover,
+		.active > &[data-toggle="dropdown"]:focus,
+		.active > &[data-toggle="dropdown"]:active {
+			color: @text-color;
+			background-color: @btn-color-d2;
+			border-color: @btn-color-d2;
+		}
+
+		
+		// dropdown styles
+		& + ul.dropdown-menu,
+		& + ul.dropdown-menu ul.dropdown-menu {
+			background: @btn-color-d1;
+			color: @text-color;
+
+			li.divider {
+				@dropdown-divider-color: contrast(darken(@@base-color,(luma(@@base-color)/4)), fadeout(#000,10%), #fff,20%);
+
+				border-bottom-color: fadeout(@dropdown-divider-color,80%);
+			}
+		}
+	}
+	
+	// define text color
+	@text-color: contrast(darken(@@base-color,(luma(@@base-color)/2.3)),#333,#fff,24%);
+
+	// when option is provided
+	& when (@option = 'custom') {
+		@btn-color: @@base-color;
+		@btn-color-l1: ~'@{@{base-color}-l1}';
+		@btn-color-l2: ~'@{@{base-color}-l2}';
+		@btn-color-d1: ~'@{@{base-color}-d1}';
+		@btn-color-d2: ~'@{@{base-color}-d2}';
+		
+		.generate-btn-styles();
+	}
+
+	// else
+	& when not (@option = 'custom') {
+		@btn-color: @@base-color;
+		@btn-color-l1: screen(@btn-color,@l1-additive);
+		@btn-color-l2: screen(@btn-color,@l2-additive);
+		@btn-color-d1: multiply(@btn-color,@d1-additive);
+		@btn-color-d2: multiply(@btn-color,@d2-additive);
+
+		.generate-btn-styles();
+	}
+	
+}
+
+
+/* disabled */
+& when (@gray-disabled-btn = true) {
+	.btn.disabled, 
+	.btn:disabled,
+	fieldset[disabled] .btn,
+	:disabled + label .btn {
+		background-color: #666 !important;
+		color: #aaa !important;
+		box-shadow: none !important;
+		border-color: transparent !important;
+		cursor: default !important
+	}
+
+	.btn.hollow {
+		background: none;
+	}
+	.btn.hollow.disabled, 
+	.btn.hollow:disabled,
+	fieldset[disabled] .btn.hollow,
+	:disabled + label .btn.hollow {
+		background: none !important;
+		color: #aaa !important;
+		border-color: #aaa !important;
+		box-shadow: none !important;
+	}
+}
+
+/* whitetext option */
+.btn.whitetext:not(.disabled) {
+	color: #fff !important;
+}
+
+.btn.disabled,
+.btn:disabled,
+fieldset[disabled] .btn,
+:disabled + label .btn {
+	opacity: 0.5;
+	cursor: default !important;
+	box-shadow: none !important;
+}
+
+/* button groups */
+.btn-group {
+	position: relative;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	.cf;
+
+	.btn + .btn {
+		margin-left: 5px;
+	}
+
+	.btn-group {
+		float: left;
+	}
+
+	.btn-group + .btn-group {
+		margin-left: 5px;
+	}
+
+	.btn {
+		float: left;
+		z-index: @btn-normal-z-index;
+
+		&:active {
+			z-index: @btn-active-z-index;
+		}
+	}
+}
+
+
+/* split button */
+.btn-group.btn-split {
+
+	.btn {
+		& when (@btn-border-radius > 0) {
+			border-radius: 0;
+		}
+	}
+
+	.btn:first-child {
+		& when (@btn-border-radius > 0) {
+			border-top-left-radius: @input-border-radius;
+			border-bottom-left-radius: @input-border-radius;
+		}
+	}	
+
+	.btn + .btn.dropdown {
+		padding-left: 7px;
+		padding-right: 7px;
+		margin-left: 0px;
+		position: relative;
+		border-left-width: 0;
+		
+		// border-radius
+		& when (@btn-border-radius > 0) {
+			border-top-right-radius: @input-border-radius;
+			border-bottom-right-radius: @input-border-radius;
+		}
+
+		&:not(.hollow):before {
+			content: " ";
+			display: block;
+			position: absolute;
+			width: 2px;
+			margin: -@btn-border-width 0;
+			left: -@btn-border-width;
+			top: 0;
+			bottom: 0;
+			background: rgba(0,0,0,0.1);
+			opacity: 1;
+			z-index: 0;
+
+			& when (@btn-disable-transition = false) {
+				transition: opacity .15s;
+			}
+		}
+
+		&:active {
+			border-left-width: @btn-border-width;
+			margin-left: -@btn-border-width;
+			transition-duration: 0s;
+		}
+	}
+
+	// border-radius when menu is active
+	& when (@btn-border-radius > 0) {
+		.active > .btn + .btn.dropdown[data-toggle] {
+			border-radius: @btn-border-radius @btn-border-radius 0 0;
+		}
+	}
+
+	& when (@include-dark = true) {
+		.dark & .btn + .btn.dropdown:not(.hollow):before {
+			background: rgba(255,255,255,0.3);
+		}
+	}
+
+	// active override 
+	&.active .btn + .btn.dropdown {
+		border-left-width: @btn-border-width;
+		margin-left: -@btn-border-width;
+	}
+	
+	
+	.btn:hover + .btn.dropdown:before,
+	.btn + .btn.dropdown:active:before,
+	&.active .btn + .btn.dropdown:before {
+		opacity: 0;
+	}
+
+	.btn + .btn.dropdown:active:before {
+		transition-duration: 0s;
+	}
+	&.active .btn + .btn.dropdown:before {
+		transition-duration: .15s;
+	}
+	&.active .btn + .btn.dropdown:active:before {
+		transition-duration: 0s !important;
+	}
+}
+
+/* segmented button group */
+.btn-group-segmented {
+	& when (@btn-disable-transition = false) {
+		transition: 0.2s opacity;
+	}
+	
+	& when (@btn-border-radius > 0) {
+		.btn {
+			border-radius: 0;
+		}
+
+		& > .btn:first-child,
+		& > label:first-of-type .btn {
+			border-top-left-radius: @input-border-radius;
+			border-bottom-left-radius: @input-border-radius;
+		}
+		& > .btn:last-child,
+		& > label:last-of-type .btn {
+			border-top-right-radius: @input-border-radius;
+			border-bottom-right-radius: @input-border-radius;
+		}
+	}	
+
+
+
+	.btn + .btn {
+		margin-left: -@btn-border-width;
+	}
+	.btn {
+		z-index: @btn-normal-z-index;
+	}
+	.btn.active {
+		z-index: @btn-active-z-index;
+	}
+	
+	// radiobox method
+	input[type="radio"] {
+		opacity: 0;
+		height: 0;
+		width: 0;
+		position: absolute;
+		overflow: hidden;
+		//visibility: hidden;
+	}
+
+	label ~ label .btn {
+		margin-left: -@btn-border-width;
+	}
+
+	label .btn {
+		z-index: @btn-normal-z-index;
+	}
+	:checked + label .btn {
+		z-index: @btn-active-z-index;
+	}
+
+	&.disabled,
+	fieldset[disabled] & {
+		opacity: 0.5;
+		pointer-events: none;
+
+		.btn {
+			opacity: 1;
+		}
+	}
+}
+
+
+/* dropdowns */
+ul.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	z-index: @dropdown-menu-z-index;
+	display: none;
+	float: left;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	background: @blue-d1;
+	color: #fff;
+	font-size: 1em;
+	box-shadow: @drop-shadow-deep; 
+
+	& when (@btn-border-radius > 0) {
+		border-radius: 0 @btn-border-radius @btn-border-radius @btn-border-radius;
+	}
+
+	&[data-dropdown-align="right"] {
+		right: 0%;
+
+		& when (@btn-border-radius > 0) {
+			border-radius: @btn-border-radius 0 @btn-border-radius @btn-border-radius;
+		}
+	}
+
+
+	li {
+		margin: 0;
+		padding: 0;
+		min-width: 180px;
+
+		a {
+			width: 100%;
+			display: block;
+			padding: 7px 20px;
+			color: inherit;
+			font-size: @btn-dropdown-menu-item-font-size;
+		}
+
+		&:hover > a {
+			text-decoration: none;
+			background: rgba(255,255,255,.3);
+		}
+
+		&.divider {
+			height: 5px;
+			border-bottom: 1px solid rgba(0,0,0,.1);
+			padding-bottom: 5px;
+			margin-bottom: 5px;
+		}
+	}
+	
+	// nested submenu
+	& > .submenu {
+		position: relative;
+		width: 100%;
+
+		& > a {
+			position: relative;
+
+			&:after {
+				content: "";
+				.caret-right;
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				margin-top: -4px;
+
+				& when (@btn-disable-transition = false) {
+					transition: 0.2s transform;
+				}
+			}
+		}
+
+		ul.dropdown-menu {
+			display: none;
+			top: 0;
+			left: 100%;
+		}
+
+		&:hover {
+
+			& > a:after {
+				transform: translateX(2px);
+			}
+
+			ul.dropdown-menu {
+				display: block;
+			}
+		}
+	}
+
+	// display when active
+	[data-dropdown-state="open"] > & {
+		display: block;
+	}
+
+}
+
+// button with loader inside
+.btn.btn-spinner {
+	position: relative;
+	transition-property: background, border-color, color, box-shadow, opacity, padding;
+
+	i.petalicon {
+		transition-property: transform, opacity;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	&:before {
+		content: "";
+		position: absolute;
+		display: inline-block;
+		top: 50%;
+		width: 16px;
+		height: 16px;
+		margin-top: -8px;
+		vertical-align: middle;
+		line-height: 1;
+
+		// initial state
+		opacity: 0;
+		transition-property: transform, width, opacity;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	// loading state
+	&.loading {
+
+		i.petalicon {
+			opacity: 0;
+		}
+
+		&:before {
+			@btn-spinner-color: #fff;
+			@btn-spinner-svg-data: escape("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='@{btn-spinner-color}' opacity='.3' d='M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z'/><path fill='@{btn-spinner-color}' d='M8 2c3.3 0 6 2.7 6 6h2c0-4.4-3.6-8-8-8v2z'/></svg>");
+			background-image: url("data:image/svg+xml,@{btn-spinner-svg-data}");
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center center;
+
+			@keyframes spinner-rotate {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+
+			animation: spinner-rotate @btn-spinner-animation-duration linear infinite;
+			opacity: 1;
+		}
+		
+		// override for white btn
+		&.white:before {
+			@btn-spinner-color: #000;
+			@btn-spinner-svg-data: escape("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='@{btn-spinner-color}' opacity='.3' d='M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z'/><path fill='@{btn-spinner-color}' d='M8 2c3.3 0 6 2.7 6 6h2c0-4.4-3.6-8-8-8v2z'/></svg>");
+			background-image: url("data:image/svg+xml,@{btn-spinner-svg-data}");
+		}
+	}
+
+	// loading-done
+	&.loading-done {
+
+		i.petalicon {
+			opacity: 0;
+		}
+		
+		&:before {
+			.petalicon;
+			.petalicon-check;
+
+			@keyframes check-whop {
+				0% {
+					transform: scale(1.4);
+					opacity: 0;
+				}
+				100% {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+
+			animation: check-whop 0.2s ease-out forwards;
+		}
+	}
+
+	// position spinner
+	&:not(.icon-right) {
+
+		i.petalicon {
+			margin-right: 3px;
+		}
+
+		&:before {
+			left: 20px;
+		}
+		&.compact:before {
+			left: 15px;
+		}
+	}
+
+	&:not(.icon-right).loading,
+	&:not(.icon-right).loading-done {
+		padding-left: 20px + 25px;
+		pointer-events: none;
+
+		&.compact {
+			padding-left: 15px + 25px;
+		}
+	}
+
+	// icon on right
+	&.icon-right {
+
+		i.petalicon {
+			margin-left: 3px;
+		}
+
+		&:before {
+			right: 22px;
+		}
+		&.compact:before {
+			right: 17px;
+		}
+	}
+
+	&.icon-right.loading,
+	&.icon-right.loading-done {
+		padding-right: 20px + 25px;
+		pointer-events: none;
+
+		&.compact {
+			padding-right: 15px + 25px;
+		}
+	}
+}
+
+// when icon already exists
+.btn.btn-spinner.has-icon {
+
+	// loading state
+	&:not(.icon-right).loading,
+	&:not(.icon-right).loading-done {
+		padding-left: 20px;
+
+		&.compact {
+			padding-left: 15px;
+		}
+	}
+
+	// loading state
+	&.icon-right.loading,
+	&.icon-right.loading-done {
+		padding-right: 20px;
+
+		&.compact {
+			padding-right: 15px;
+		}
+	}
+}
+
+
+/* button color sets */
+.btn {
+
+	& 		{ .generate-btn('primary-accent-color') } 
+
+	&.blue 	{ .generate-btn('blue'; 'custom') }
+	&.green { .generate-btn('green'; 'custom') }
+	&.red 	{ .generate-btn('red'; 'custom') }
+
+	&.black 	{ .generate-btn('black') } 
+	&.gray 		{ .generate-btn('gray') } 
+	&.white 	{ .generate-btn('white') }
+
+}

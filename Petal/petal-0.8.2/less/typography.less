@@ -1,0 +1,157 @@
+// * ================================= *
+// *  Typography 
+// * ================================= *
+
+// import dependencies
+@import (reference) 'variables.less';
+@import (reference) 'color-palette.less';
+@import (reference) 'mixins.less';
+
+// headers
+h1,h2,h3,h4,h5,h6 {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+
+	small {
+		color: @gray;
+		font-size: 0.7em;
+		font-weight: normal;
+		text-transform: none;
+		letter-spacing: 0;
+	}
+}
+
+h1 {
+	font-weight: @header-font-weight;
+	font-size: 3rem;
+}
+
+h2 {
+	font-weight: @header-font-weight;
+	font-size: 2rem;
+}
+
+h3 {
+	font-weight: @header-font-weight;
+	font-size: 1.5rem;
+}
+
+h4 {
+	font-weight: @header-font-weight;
+	font-size: 1.25rem;
+
+	small {
+		font-size: 0.8em;
+	}
+}
+
+h5 {
+	font-weight: @header-font-weight;
+	font-size: 1rem;
+
+	small {
+		font-size: 0.9em;
+	}
+}
+
+h6 {
+	font-weight: @header-font-weight;
+	font-size: 0.9rem;
+
+	small {
+		font-size: 0.9em;
+	}
+}
+
+h3,h4,h5,h6 {
+	& when (@header-uppercase = true) {
+		text-transform: uppercase;
+		letter-spacing: @header-letter-spacing;
+	}
+}
+
+// case stylization overrides
+.uppercase {
+	text-transform: uppercase;
+	letter-spacing: @header-letter-spacing;
+}
+
+.keepcase {
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+
+// paragraph
+p {
+	line-height: @paragraph-line-height;
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+// code blocks
+code {
+	margin: 0 1px;
+	padding: 1px 5px;
+	background-color: #f0f0f0;
+	font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+	font-size: 0.9em;
+	letter-spacing: 0;
+	text-transform: none;
+
+	& when (@include-dark = true) {
+		.dark & {
+			background-color: #666;
+		}
+	}
+}
+
+pre {
+	padding: 0;
+	margin: 0;
+	background-color: #f0f0f0;
+}
+
+pre code {
+	background-color: #f0f0f0;
+	padding: 15px;
+}
+
+// blockquote
+blockquote {
+	.colorset(@primary-accent-color);
+	border-left: 2px solid @color-l1;
+	padding-left: 20px;
+	margin-left: 20px;
+
+}
+
+// lists
+ol, ul {
+	margin: 0 0 1em 0;
+	padding: 0 0 0 2em;
+}
+
+li {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
+// links
+a {
+	color: @link-text-color;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+// horizontal divider
+hr {
+	height: 1px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: none;
+	background-color: #ddd;
+}

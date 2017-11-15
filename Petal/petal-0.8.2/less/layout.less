@@ -1,0 +1,168 @@
+// * ================================= *
+// *  Layout Classes
+// * ================================= *
+
+// import dependencies
+@import (reference) 'variables.less';
+@import (reference) 'color-palette.less';
+@import (reference) 'mixins.less';
+
+/* basic layout */
+.container {
+	width: @container-width;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: @container-padding;
+	padding-right: @container-padding;
+}
+
+.stretch {
+	width: 100%;
+}
+
+/* columns */
+.row {
+	margin-left: -@col-padding;
+	margin-right: -@col-padding;
+
+	& when (@col-method = float) {
+		.cf; // clearfix
+	}
+	
+	& when (@col-method = flex) {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		flex-wrap: wrap;
+	}
+
+	// collapsed gutter
+	&.collapse-gutter {
+		& > [class^="col-"],
+		& > [class*=" col-"] {
+			&:not(:first-of-type):not(:last-of-type) {
+				padding-left: @col-padding /2;
+				padding-right: @col-padding /2;
+			}
+			&:first-of-type:not(:last-of-type) {
+				padding-right: @col-padding /2;
+			}
+			&:last-of-type:not(:first-of-type) {
+				padding-left: @col-padding /2;
+			}
+		}
+	}
+}
+[class^="col-"], [class*=" col-"] {
+	min-height: 1px;
+	padding-left: @col-padding;
+	padding-right: @col-padding;
+
+	& when (@col-method = float) {
+		float: left;
+	}
+	
+	& when (@col-method = flex) {
+		.stretch {
+			display: flex;
+			flex-wrap: wrap;
+
+			& > * {
+				width: 100%;
+			}
+		}
+	}
+}
+.col-1 {
+	width: 100%;
+	
+	& when (@col-method = flex) {
+		max-width: 100%;
+		flex-basis: 100%;
+	}
+}
+.col-2 {
+	width: 50%;
+
+	& when (@col-method = flex) {
+		max-width: (100% / 2);
+		flex-basis: (100% / 2);		
+	}
+}
+.col-3 {
+	width: 33.3333%;
+
+	& when (@col-method = flex) {
+		max-width: (100% / 3);
+		flex-basis: (100% / 3);		
+	}
+
+	&.colspan-2 {
+		width: (100% * (2/3));
+
+		& when (@col-method = flex) {
+			max-width: (100% * (2/3));
+			flex-basis: (100% * (2/3));	
+		}
+	}
+}
+.col-4 {
+	width: 25%;
+
+	& when (@col-method = flex) {
+		max-width: (100% / 4);
+		flex-basis: (100% / 4);
+	}
+
+	&.colspan-2 {
+		width: 50%;
+
+		& when (@col-method = flex) {
+			max-width: (100% * (2/4));
+			flex-basis: (100% * (2/4));
+		}
+	}
+	&.colspan-3 {
+		width: 75%;
+
+		& when (@col-method = flex) {
+			max-width: (100% * (3/4));
+			flex-basis: (100% * (3/4));
+		}
+	}
+}
+
+.col-5 {
+	width: 20%;
+
+	& when (@col-method = flex) {
+		max-width: (100% / 5);
+		flex-basis: (100% / 5);
+	}
+
+	&.colspan-2 {
+		width: 40%;
+
+		& when (@col-method = flex) {
+			max-width: (100% * (2/5));
+			flex-basis: (100% * (2/5));
+		}
+	}
+	&.colspan-3 {
+		width: 60%;
+
+		& when (@col-method = flex) {
+			max-width: (100% * (3/5));
+			flex-basis: (100% * (3/5));
+		}
+	}
+	&.colspan-4 {
+		width: 80%;
+
+		& when (@col-method = flex) {
+			max-width: (100% * (4/5));
+			flex-basis: (100% * (4/5));
+		}
+	}
+}
+

@@ -1,0 +1,1049 @@
+---
+title: Form Elements
+area: docs
+section: components
+list-order: 6
+---
+
+<div class="section-header">
+	<h2 id="section-forms">Form Elements</h2>
+	<p class="sub">
+		<span class="file-ref">forms.less</span>
+	</p>
+</div>
+
+<h3 id="section-forms-input">Input boxes</h3>
+
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+	<input class="input" type="text" placeholder="Name" />
+	<input class="input" type="email" placeholder="Email" />
+	<button class="btn">Button</button>
+</div>
+
+<p>Add <code>.input</code> class to an <code>&lt;input&gt;</code> element to apply the design.</p>
+
+
+<h3 id="section-forms-textarea">Textarea</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+	<textarea cols="30" rows="10" class="input resize-vertical" placeholder="This textarea can be only resized vertically."></textarea>
+</div>
+<p>Add the same <code>.input</code> class to a <code>&lt;textarea&gt;</code> for the same design.</p>
+<p>On textareas you can use additional <code>.resize-horizontal</code> and <code>.resize-vertical</code> classes to limit form resizing directions.</p>
+
+<br>
+
+<h3 id="section-forms-groups">Form groups</h3>
+
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<form>
+	<div class="form-group">
+		<label class="form-label" for="demoFormEmail">Email</label>
+		<input class="input" id="demoFormEmail" type="email" placeholder="Email" />
+		<p class="form-caption">Enter your email address.</p>
+	</div>
+	<div class="form-group">
+		<label class="form-label" for="demoFormPassword">Password <span class="form-caption">- Inline captions inside labels are fine too.</span></label>
+		<input class="input" id="demoFormPassword" type="password" placeholder="Password" />
+	</div>
+	<div class="form-group">
+		<label class="form-label" for="demoFormComments">Comments</label>
+		<textarea class="input" name="demoFormComments" id="demoFormComments" cols="30" rows="10"></textarea>
+	</div>
+	<div class="form-group">
+		<a class="btn">Submit</a>
+	</div>
+</form>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<form>
+	<div class="form-group">
+		<label class="form-label" for="demoFormEmail">Email</label>
+		<input class="input" id="demoFormEmail" type="email" placeholder="Email" />
+		<p class="form-caption">Enter your email address.</p>
+	</div>
+	<div class="form-group">
+		<label class="form-label" for="demoFormPassword">Password <span class="form-caption">- Inline captions inside labels are fine too.</span></label>
+		<input class="input" id="demoFormPassword" type="password" placeholder="Password" />
+	</div>
+	<div class="form-group">
+		<label class="form-label" for="demoFormComments">Comments</label>
+		<textarea class="input" name="demoFormComments" id="demoFormComments" cols="30" rows="10"></textarea>
+	</div>
+	<div class="form-group">
+		<a class="btn">Submit</a>
+	</div>
+</form>
+```
+{{/markdown}}
+</div>
+
+<p>Include <code>&lt;label&gt;</code>s and <code>&lt;input&gt;</code>s inside a <code>.form-group</code> to have them stretch across the container as block elements.</p>
+
+<p>Add <code>.form-caption</code> class for captions.</p>
+<br>
+
+<h4>Inline form groups</h4>
+
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<form class="form-inline">
+	<div class="form-group">
+		<label class="form-label" for="demoForm2Email">Email</label>
+		<input class="input" id="demoForm2Email" type="email" placeholder="Email" />
+	</div>
+	<div class="form-group">
+		<label class="form-label" for="demoForm2Password">Password</label>
+		<input class="input" id="demoForm2Password" type="password" placeholder="Password" />
+	</div>
+	<div class="form-group">
+		<a class="btn">Submit</a>
+	</div>
+</form>
+<form class="form-inline">
+	<div class="form-group">
+		<div class="input-group">
+			<label class="input-addon" for="demoForm2firstname">First Name</label>
+			<input class="input" id="demoForm2firstname" type="text" />
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<label class="input-addon" for="demoForm2lastname">Last Name</label>
+			<input class="input" id="demoForm2lastname" type="text" />
+		</div>
+	</div>
+</form>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<form class="form-inline">
+	<div class="form-group">
+		<label class="form-label" for="demoForm2Email">Email</label>
+		<input class="input" id="demoForm2Email" type="email" placeholder="Email" />
+	</div>
+	<div class="form-group">
+		<label class="form-label" for="demoForm2Password">Password</label>
+		<input class="input" id="demoForm2Password" type="password" placeholder="Password" />
+	</div>
+	<div class="form-group">
+		<a class="btn">Submit</a>
+	</div>
+</form>
+<form class="form-inline">
+	<div class="form-group">
+		<div class="input-group">
+			<label class="input-addon" for="demoForm2firstname">First Name</label>
+			<input class="input" id="demoForm2firstname" type="text" />
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<label class="input-addon" for="demoForm2lastname">Last Name</label>
+			<input class="input" id="demoForm2lastname" type="text" />
+		</div>
+	</div>
+</form>
+```
+{{/markdown}}
+</div>
+
+<p>Append <code>.form-inline</code> class to a parent container to put <code>.form-groups</code> in one line. You need to apply paddings and margins manually.</p>
+
+<br>
+
+<h3 id="section-forms-horizontal-group">Horizontal form group</h3>
+
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<form class="form-horizontal">
+	<div class="form-group">
+		<div class="col-5">
+			<label class="form-label" for="demoFormHorizontalEmail">Email</label>
+		</div>
+		<div class="col-5 colspan-4">
+			<input class="input" id="demoFormHorizontalEmail" type="email" placeholder="Email" />
+			<p class="form-caption">Enter your email address.</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-5">
+			<label class="form-label" for="demoFormHorizontalPassword">Password</label>
+		</div>
+		<div class="col-5 colspan-4">
+			<input class="input" id="demoFormHorizontalPassword" type="password" placeholder="Password" />
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-5">
+			<label class="form-label" for="demoFormHorizontalComments">Comments</label>
+		</div>
+		<div class="col-5 colspan-4">		
+			<textarea class="input" name="demoFormHorizontalComments" id="demoFormHorizontalComments" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-5">
+		</div>
+		<div class="col-5 colspan-4">		
+			<a class="btn">Submit</a>
+		</div>
+	</div>
+</form>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<form class="form-horizontal">
+	<div class="form-group">
+		<div class="col-5">
+			<label class="form-label" for="demoFormHorizontalEmail">Email</label>
+		</div>
+		<div class="col-5 colspan-4">
+			<input class="input" id="demoFormHorizontalEmail" type="email" placeholder="Email" />
+			<p class="form-caption">Enter your email address.</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-5">
+			<label class="form-label" for="demoFormHorizontalPassword">Password</label>
+		</div>
+		<div class="col-5 colspan-4">
+			<input class="input" id="demoFormHorizontalPassword" type="password" placeholder="Password" />
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-5">
+			<label class="form-label" for="demoFormHorizontalComments">Comments</label>
+		</div>
+		<div class="col-5 colspan-4">		
+			<textarea class="input" name="demoFormHorizontalComments" id="demoFormHorizontalComments" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-5">
+		</div>
+		<div class="col-5 colspan-4">		
+			<a class="btn">Submit</a>
+		</div>
+	</div>
+</form>
+```
+{{/markdown}}
+</div>
+
+<p>Add a <code>.form-horizontal</code> class to the enclosing <code>&lt;form&gt;</code> or <code>&lt;div&gt;</code> for a row-and-column layout. Then insert <code>.col-x</code> columns as you would for an ordinary column layout. You don't need to add <code>.row</code>s here because the <code>.form-group</code>s inside a horizontal forms automatically gain the styles that the <code>.row</code>s have.</p>
+
+<p>One difference is that columns placed inside a horizontal form are automatically applied with the <code>.collapse-gutter</code> setting to save space inbetween.</p>
+
+<br>
+
+<h3 id="section-forms-input-groups">Input groups</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<form>
+	<div class="form-group">
+		<label class="form-label" for="demoForm3Username">Username</label>
+		<div class="input-group">
+			<span class="input-addon">@</span>
+			<input class="input" id="demoForm3Username" type="text" />
+			<span class="input-addon-btn"><button class="btn green">Check</button></span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="form-label" for="demoForm3Email">Email</label>
+		<div class="input-group">
+			<input class="input" id="demoForm3Email" placeholder="yourname" type="text" />
+			<span class="input-addon">@</span>
+			<input class="input" id="demoForm3EmailB" placeholder="yourcompany.com" type="text" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="form-label" for="demoForm3Subdomain">Subdomain</label>
+		<div class="input-group">
+			<input class="input" id="demoForm3Subdomain" type="text" />
+			<span class="input-addon">.somesite.com</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="form-label" for="demoForm3Search">Search</label>
+		<div class="input-group">
+			<input class="input" id="demoForm3Search" type="text" />
+			<span class="input-addon-btn"><button class="btn">Search</button></span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="form-label" for="demoForm4Text">Textarea</label>
+		<div class="input-group">
+			<textarea class="input resize-vertical" id="demoForm4Text" type="text"></textarea>
+			<span class="input-addon-btn"><button class="btn">Submit</button></span>
+		</div>
+	</div>
+</form>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<form>
+	<div class="form-group">
+		<label class="form-label" for="demoForm3Username">Username</label>
+		<div class="input-group">
+			<!-- input addon up front -->
+			<span class="input-addon">@</span>
+
+			<!-- input -->
+			<input class="input" id="demoForm3Username" type="text" />
+
+			<!-- input addon button -->
+			<span class="input-addon-btn">
+				<button class="btn green">Check</button>
+			</span>
+		</div>
+	</div>
+</form>
+```
+{{/markdown}}
+</div>
+
+<p>Input groups are used when you want to put form elements like input fields, buttons or text as addons in one line blocks. <code>.input-group</code> uses flexbox for layout so child components will stretch appropriately and keep same height if any sibling element happens to be larger than the other.</p>
+
+<p>Place <code>.input-addon</code> class blocks before or after the input. Enclose them with a <code>.input-group</code> container.</p>
+
+<p>To place a button in an input group, use <code>.input-addon-btn</code> instead.</p>
+
+<br>
+
+<h3 id="section-forms-special">Special States</h3>
+
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+	<div class="form-group">
+		<label for="demoFormStates1" class="form-label">Disabled</label>
+		<input class="input" type="text" id="demoFormStates1" value="Disabled" disabled />
+	</div>
+	<div class="form-group">
+		<label for="demoFormStates2" class="form-label">Readonly</label>
+		<input class="input" type="text" id="demoFormStates2" value="Readonly" readonly />
+	</div>
+	<div class="form-group">
+		<label for="demoFormStates3" class="form-label">Static Text</label>
+		<p class="form-placeholder" id="demoFormStates3">Placeholder Text</p>
+	</div>
+</div>
+
+<p>You can use <code>disabled</code> and <code>readonly</code> attributes on the <code>&lt;input&gt;</code>s.</p>
+<p>There is also a <code>.form-placeholder</code> class you can use on a non-input element to position a static text inside a form layout.</p>
+
+<br>
+
+<br>
+<hr class="subdivider">
+
+<h3 id="section-forms-checkbox-radio">Checkboxes and Radioboxes</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+	<div class="row">
+		<div class="col-2">
+			<div class="form-group">
+				<input class="checkbox" type="checkbox" id="demoCheck1">
+				<label for="demoCheck1">Checkbox 1</label>
+				<input class="checkbox" type="checkbox" id="demoCheck2" checked>
+				<label for="demoCheck2">Checkbox 2</label>
+				<input class="checkbox" type="checkbox" id="demoCheck3" disabled>
+				<label for="demoCheck3">Disabled</label>
+				<input class="checkbox" type="checkbox" id="demoCheck4" disabled checked>
+				<label for="demoCheck4">Disabled (Pre-checked)</label>
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="form-group">
+				<input class="radiobox" type="radio" name="demoRadio" id="demoRadio1" checked>
+				<label for="demoRadio1">Radiobox 1</label>
+				<input class="radiobox" type="radio" name="demoRadio" id="demoRadio2">
+				<label for="demoRadio2">Radiobox 2</label>
+				<input class="radiobox" type="radio" name="demoRadio" id="demoRadio3" disabled>
+				<label for="demoRadio3">Disabled</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<!-- Checkbox -->
+<input class="checkbox" type="checkbox" id="demoCheck1" checked disabled>
+<label for="demoCheck1">Checkbox 1</label>
+
+<!-- Radiobox -->
+<input class="radiobox" type="radio" name="demoRadio" id="demoRadio1" checked>
+<label for="demoRadio1">Radiobox 1</label>
+```
+{{/markdown}}
+</div>
+
+<p>Custom checkbox and radiobox styles uses CSS3 <code>:after</code> and <code>:before</code> pseudo elements to override default browser appearance.</p>
+<p>Therefore, <code>&lt;label&gt;</code>s are a requirement and must be placed <b>after</b> the <code>&lt;input&gt;</code>s. Also you need to append <code>.checkbox</code> or <code>.radiobox</code> classes to each <code>&lt;input&gt;</code>s for correct appearance.</p>
+
+<p><code>.dark</code> classes on parent elements are supported for darker check/radiobox style variations.</p>
+
+<br>
+<h5>Customizable options</h5>
+<div class="demo-code">
+{{#markdown}}
+``` less
+// checkboxes & radioboxes
+@checkbox-size: 20px;
+@checkbox-border-width: @input-border-width; //2px
+@checkbox-border-radius: 100%;
+@radiobox-border-radius: 100%;
+@checkbox-color: @primary-accent-color;
+@checkbox-disable-transition: false;
+```
+{{/markdown}}
+</div>
+<br>
+
+
+<h3 id="section-forms-switches">Switches</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+	<div class="row">
+		<div class="col-3">
+			<div class="form-group">
+				<label class="form-label">Default Switch</label>
+				<span class="chk-switch-label">OFF</span>
+				<div class="chk-switch">
+					<input type="checkbox" id="demoSwitch1" checked>
+					<label for="demoSwitch1"><span></span></label>
+				</div>
+				<span class="chk-switch-label">ON</span>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				<label class="form-label">A/B Type Switch</label>
+				<span class="chk-switch-label">Cats</span>
+				<div class="chk-switch ab-type">
+					<input type="checkbox" id="demoSwitch2">
+					<label for="demoSwitch2"><span></span></label>
+				</div>
+				<span class="chk-switch-label">Dogs</span>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				<label class="form-label">Disabled Switch</label>
+				<span class="chk-switch-label">Skip Tuesdays</span>
+				<div class="chk-switch disabled">
+					<input type="checkbox" id="demoSwitch3" checked disabled>
+					<label for="demoSwitch3"><span></span></label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mv-15">
+		<div class="col-3">
+			<div class="form-group">
+				<label class="form-label">ON/OFF Type Switch</label>
+				<span class="chk-switch-label">OFF</span>
+				<div class="chk-switch onoff-type">
+					<input type="checkbox" id="demoSwitch4" checked>
+					<label for="demoSwitch4"><span></span></label>
+				</div>
+				<span class="chk-switch-label">ON</span>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				<label class="form-label">ON/OFF with LED</label>
+				<span class="chk-switch-label">Activate</span>
+				<div class="chk-switch onoff-type led">
+					<input type="checkbox" id="demoSwitch5">
+					<label for="demoSwitch5"><span></span></label>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				<label class="form-label">ON/OFF Disabled</label>
+				<span class="chk-switch-label">Activate</span>
+				<div class="chk-switch onoff-type led disabled">
+					<input type="checkbox" id="demoSwitch6" checked disabled>
+					<label for="demoSwitch6"><span></span></label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<div class="form-group">
+	<label class="form-label">ON/OFF Type Switch</label>
+	<span class="chk-switch-label">OFF</span>
+	<div class="chk-switch onoff-type">
+		<input type="checkbox" id="demoSwitch1" checked>
+		<label for="demoSwitch1"><span></span></label>
+	</div>
+	<span class="chk-switch-label">ON</span>
+</div>
+```
+{{/markdown}}
+</div>
+
+<p>"Switch" style toggles using checkboxes. <code>span.chk-switch-label</code> is optional. You must have the <code>.chk-switch</code> and the markup inside for the switch to work.</p>
+
+<h5>Options for <code>.chk-switch</code></h5>
+
+<ul>
+	<li><code>.onoff-type</code> : ON-OFF type toggle</li>
+	<li><code>.onoff-type.led</code> : ON-OFF type toggle with a LED light indicator on the ticker</li>
+	<li><code>.ab-type</code> : A/B-type toggle without the switch background color.</li>
+	<li><code>.disabled</code> AND <code>:disabled</code> attribute on <code>input</code> : Disable switch</li>
+	<li><code>.align-right</code> : Align switch to the right</li>
+</ul>
+
+<br>
+
+<h5>Customizable options</h5>
+<div class="demo-code">
+{{#markdown}}
+``` less
+// switch toggle
+@chk-switch-size: 24px;
+@chk-switch-border-width: @input-border-width; //2px
+@chk-switch-border-radius: @checkbox-size;
+@chk-switch-color: @primary-accent-color;
+@chk-switch-disable-transition: false;
+@chk-switch-disable-shadows: false;
+```
+{{/markdown}}
+</div>
+
+
+<br>
+<hr class="subdivider">
+
+<h3 id="section-forms-disabling">Disabling whole form groups</h3>
+
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<form>
+	<fieldset id="fieldsetDisableDemo" disabled>
+		<div class="form-group">
+			<label class="form-label" for="fieldsetDisableDemoFormEmail">Email</label>
+			<input class="input" id="fieldsetDisableDemoFormEmail" type="email" placeholder="Email" />
+			<p class="form-caption">Enter your email address.</p>
+		</div>
+		<div class="form-group">
+			<label class="form-label" for="fieldsetDisableDemoFormPassword">Password <span class="form-caption">- Inline captions inside labels are fine too.</span></label>
+			<input class="input" id="fieldsetDisableDemoFormPassword" type="password" placeholder="Password" />
+		</div>
+		<div class="form-group">
+			<label class="form-label" for="fieldsetDisableDemoFormComments">Comments</label>
+			<textarea class="input" name="fieldsetDisableDemoFormComments" id="fieldsetDisableDemoFormComments" cols="30" rows="10"></textarea>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				<div class="form-group">
+					<input type="radio" name="fieldsetDisableDemoFormRadio" id="fieldsetDisableDemoFormRadio1" class="radiobox" checked>
+					<label for="fieldsetDisableDemoFormRadio1">Radio Option 1</label>
+					<input type="radio" name="fieldsetDisableDemoFormRadio" id="fieldsetDisableDemoFormRadio2" class="radiobox">
+					<label for="fieldsetDisableDemoFormRadio2">Radio Option 2</label>
+				</div>
+			</div>
+			<div class="col-2">
+				<div class="form-group">
+					<input type="checkbox" id="fieldsetDisableDemoFormCheckbox" class="checkbox">
+					<label for="fieldsetDisableDemoFormCheckbox">Checkbox</label>
+
+					<span class="chk-switch-label">Switch</span>
+					<div class="chk-switch">
+						<input type="checkbox" class="chk-switch" id="fieldsetDisableDemoFormSwitch" checked>
+						<label for="fieldsetDisableDemoFormSwitch"><span></span></label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<a class="btn green">Submit</a>
+		</div>
+	</fieldset>
+</form>
+</div>
+<div class="demo-panel form-group gray p-10">
+	<span class="chk-switch-label">Toggle Fieldset Disable</span>
+	<div class="chk-switch">
+		<input type="checkbox" class="chk-switch" id="fieldset-disable-switch" data-toggle-class="fieldset-disable" checked>
+		<label for="fieldset-disable-switch"><span></span></label>
+	</div>
+</div>
+
+<p>Put form-groups and elements inside <code>&lt;fieldset&gt;</code> with a <code>disabled</code> attribute to disable the whole block.</p>
+
+<p>This will apply disabled styles to Input, Textarea, Buttons, Checkboxes and Check Switches. Buttons with <code>.btn</code> classes on an <code>a</code> element instead of <code>button</code> will be disabled as well, but since it only prevents click through the <code>pointer-events: none</code> CSS property, for safety use Javascript to completely disable interaction.</p>
+
+<br>
+
+<h4>Customizable options</h4>
+<div class="demo-code">
+{{#markdown}}
+``` less
+// forms 
+@input-border-width: 2px;
+@input-border-radius: 0;
+@input-font-size: 0.9em;
+@input-textarea-font-size: 0.8em;
+@input-label-font-size: 0.8em;
+@input-label-font-weight: 900;
+@input-label-letter-spacing: 2px;
+@input-line-height: 1.2;
+```
+{{/markdown}}
+</div>
+
+<br>
+
+<h3 id="section-forms-validation">
+	Form Validation
+	<a href="javascript.html"><span class="badge warning js-req">Requires JavaScript</span></a>
+</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<div class="row collapse-gutter">
+	<div class="col-2">
+		<div class="form-group validation valid">
+			<label class="form-label" for="validationDemoFormUsername">Username</label>
+			<input class="input" id="validationDemoFormUsername" type="text" />
+			<p class="form-caption">Username is available!</p>
+		</div>
+
+		<div class="form-group validation warning">
+			<label class="form-label" for="validationDemoFormName">Name</label>
+			<input class="input" id="validationDemoFormName" type="text" />
+			<p class="form-caption">That's a strange name...</p>
+		</div>
+
+		<div class="form-group validation error">
+			<label class="form-label" for="validationDemoFormPassword">Password</label>
+			<input class="input" id="validationDemoFormPassword" type="password" />
+			<p class="form-caption">Invalid Password.</p>
+		</div>
+	</div>
+	<div class="col-2">
+		<div class="form-group validation validation-icons valid">
+			<label class="form-label" for="validationDemoFormUsername">Username</label>
+			<div class="input-group">
+				<input class="input" id="validationDemoFormUsername" type="text" />
+			</div>
+			<p class="form-caption">Username is available!</p>
+		</div>
+
+		<div class="form-group validation validation-icons warning">
+			<label class="form-label" for="validationDemoFormName">Name</label>
+			<div class="input-group">
+				<input class="input" id="validationDemoFormName" type="text" />
+			</div>
+			<p class="form-caption">That's a strange name...</p>
+		</div>
+
+		<div class="form-group validation validation-icons error">
+			<label class="form-label" for="validationDemoFormPassword">Password</label>
+			<div class="input-group">
+				<input class="input" id="validationDemoFormPassword" type="password" />
+			</div>
+			<p class="form-caption">Invalid Password.</p>
+		</div>
+	</div>
+</div>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<div class="form-group validation valid">
+	<label class="form-label" for="username">Username</label>
+	<div class="input-group">
+		<input class="input" id="username" type="text" />
+	</div>
+	<p class="form-caption">Username is available!</p>
+</div>
+
+<div class="form-group validation warning">
+	<label class="form-label" for="name">Name</label>
+	<div class="input-group">
+		<input class="input" id="name" type="text" />
+	</div>
+	<p class="form-caption">That's a strange name...</p>
+</div>
+
+<div class="form-group validation error">
+	<label class="form-label" for="password">Password</label>
+	<div class="input-group">
+		<input class="input" id="password" type="password" />
+	</div>
+	<p class="form-caption">Invalid Password.</p>
+</div>
+```
+{{/markdown}}
+</div>
+
+<p>Petal offers validation state styles for form inputs. Add <code>.validation</code> class and appropriate state classes <code>.valid</code>, <code>.warning</code>, <code>.error</code> classes to <code>.form-group</code> to override border colors. You need to use custom JavaScript for actual validation of contents and append appropriate state classes to HTML elements.</p>
+
+<h5>Feedback Icons</h5>
+<p>Additionally, you can display feedback icons at the right of input boxes along with accented border colors. Add <code>.validation-icons</code> class on form group, then place the <code>input</code> inside an <code>.input-group</code> and the icons will appear.</p>
+
+<p>To compensate for the spaces the icons take up, the state classes will append additional padding on the right side of the input box. Note that if the input box does not have a set <code>width</code> value or has <code>width: auto;</code>, (for example, when it's in an <code>.form-inline</code>), the input box width will visually shift when the icons or spinners are added. Make sure you manually set the widths or use full-width form groups if you don't want this.</p>
+
+<h5>Colored Caption Texts</h5>
+<p>Caption message texts (<code>.form-caption</code>) inside a form group with the validation classes will be also colored following the the validation states.</p>
+
+<br>
+
+<h4>Checkbox and Radiobox validation</h4>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+	<div class="form-group">
+		<input type="checkbox" id="validationDemoFormCheckbox" class="checkbox validation error" required>
+		<label for="validationDemoFormCheckbox">I agree to terms of service.</label>
+	</div>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<div class="form-group">
+	<input type="checkbox" id="checkbox" class="checkbox validation error" required>
+	<label for="checkbox">I agree to terms of service.</label>
+</div>
+```
+{{/markdown}}
+</div>
+<p>For checkboxes and radioboxes, only <code>.error</code> state style is available. You can use this when you want to highlight checkboxes as invalid when they have <code>required</code> attribute and user should check (or uncheck) to proceed. Note that unlike form inputs, checkboxes take the <code>.validation.error</code> class on <code>&lt;input&gt;</code> rather than on parent <code>.form-group</code>s. (In other words, checkboxes and radioboxes do not require parent form-groups for validation style.</p>
+
+<br>
+
+<h4>Disabling HTML5 default validation states</h4>
+<p>Petal by default setting includes style overrides for HTML5 form validation attribute <code>:invalid</code>. So <a href="http://caniuse.com/#search=%3Ainvalid" target="_blank">if the browser supports</a> native validation of inputs, Petal will target <code>:invalid</code> pseudo-class and display the border color as red. This is convenient when you want a simple visual validation you can use on the fly, but if your project has a more sophisticated validation system of your own the <code>:invalid</code> state style may interfere with custom validation class styles (for example, if you want to not show invalid state when input is yet untouched). In such cases, you can choose not to output <code>:invalid</code> related style overrides on build by setting the <code>@input-html5-validation-styles</code> global variable to <code>false</code>.</p>
+
+<br>
+
+<h4>Customizable options</h4>
+<div class="demo-code">
+{{#markdown}}
+``` less
+@input-html5-validation-styles: true;
+```
+{{/markdown}}
+</div>
+
+<br>
+<hr class="subdivider">
+
+<h3 id="section-forms-input-spinners">
+	Spinner in inputs
+	<a href="javascript.html"><span class="badge warning js-req">Requires JavaScript</span></a>
+</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<div class="row">
+	<div class="col-2">
+		<div class="form-group" data-toggle-loading-state>
+			<label class="form-label">Standalone <code>.loading</code></label>
+			<div class="input-group">
+				<input class="input" id="demoFormSpinner2" type="text" />
+			</div>
+			<p class="form-caption">Caption Message</p>
+		</div>
+	</div>
+	<div class="col-2">
+		<div class="form-group validation border-colors valid" data-toggle-loading-state>
+			<label class="form-label">With <code>.validation</code> class</label>
+			<div class="input-group">
+				<input class="input" id="demoFormSpinner1" type="text" />
+			</div>
+			<p class="form-caption">Caption Message</p>
+		</div>
+	</div>
+</div>
+<button class="btn" id="input-spinner-demo-toggle">Toggle Spinner</button>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<div class="form-group validation loading">
+	<div class="input-group">
+		<input class="input" id="demoFormSpinner1" type="text" />
+	</div>
+</div>
+```
+{{/markdown}}
+</div>
+
+<p>When you need a loading indicator inside a input box. Place the <code>input</code> inside an <code>.input-group</code>, and append the <code>.loading</code> class on the input group when you want to display the spinner.</p>
+
+<p>The <code>.loading</code> class can be used stand-alone or along with the <code>.validation</code> class. When using <code>.loading</code> class on <code>.validation</code>, the loading spinner will always override the validation state icons.</p>
+
+<br>
+
+<h4>Customizable options</h4>
+<div class="demo-code">
+{{#markdown}}
+``` less
+@input-spinner-color: @primary-accent-color;
+@input-spinner-animation-duration: 0.4s;
+```
+{{/markdown}}
+</div>
+
+
+<br>
+<hr class="subdivider">
+
+
+<h3 id="section-forms-segmented-radio">Segmented Buttons (Radiobox method)</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+	<div class="btn-group btn-group-segmented">
+		<input type="radio" name="demoSegmented" id="demoSegmented1" checked>
+		<label for="demoSegmented1"><div class="btn hollow">Option 1</div></label>
+
+		<input type="radio" name="demoSegmented" id="demoSegmented2">
+		<label for="demoSegmented2"><div class="btn hollow">Option 2</div></label>
+
+		<input type="radio" name="demoSegmented" id="demoSegmented3">
+		<label for="demoSegmented3"><div class="btn hollow">Option 3</div></label>
+
+		<input type="radio" name="demoSegmented" id="demoSegmented4" disabled>
+		<label for="demoSegmented4"><div class="btn hollow">Option 4</div></label>
+	</div>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<div class="btn-group btn-group-segmented">
+	<input type="radio" name="demoSegmented" id="demoSegmented1" checked>
+	<label for="demoSegmented1"><div class="btn hollow">Option 1</div></label>
+
+	<input type="radio" name="demoSegmented" id="demoSegmented2">
+	<label for="demoSegmented2"><div class="btn hollow">Option 2</div></label>
+
+	<input type="radio" name="demoSegmented" id="demoSegmented3">
+	<label for="demoSegmented3"><div class="btn hollow">Option 3</div></label>
+
+	<input type="radio" name="demoSegmented" id="demoSegmented4" disabled>
+	<label for="demoSegmented4"><div class="btn hollow">Option 4</div></label>
+</div>
+```
+{{/markdown}}
+</div>
+
+<p>This method uses radio buttons to make segmented button groups toggle function work without using JavaScript.</p>
+
+<p>Use the same <code>.btn-group-segmented</code> class on the button group, insert the buttons inside a <code>&lt;label&gt;</code> which must be placed directly after the <code>&lt;input type="radio"&gt;</code> .</p>
+
+<p>Add <code>disabled</code> attribute on <code>&lt;input&gt;</code> to disable the button.</p>
+
+<br>
+<hr class="subdivider">
+
+
+<h3 id="section-forms-selectboxes">
+	Selectboxes
+</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<div class="row">
+	<div class="col-2">
+		<label class="form-label" for="demoSelectboxSimple1">Selectbox</label>
+		<select name="selectbox" id="demoSelectboxSimple1" class="select stretch">
+			<option>Lorem</option>
+			<option>ipsum</option>
+			<option>dolor</option>
+			<option>sit</option>
+			<option>amet</option>
+			<option>consectetur</option>
+		</select>
+		<br>
+		<label class="form-label" for="demoSelectboxSimple2">Selectbox (disabled)</label>
+		<select name="selectbox" id="demoSelectboxSimple2" class="select stretch" disabled>
+			<option>Lorem</option>
+			<option>ipsum</option>
+			<option>dolor</option>
+			<option>sit</option>
+			<option>amet</option>
+			<option>consectetur</option>
+		</select>
+	</div>
+	<div class="col-2">
+		<label class="form-label" for="demoSelectboxSimple3">Selectbox (Multiple)</label>
+		<select name="selectbox" id="demoSelectboxSimple3" class="select stretch" multiple>
+			<option>Lorem</option>
+			<option>ipsum</option>
+			<option>dolor</option>
+			<option>sit</option>
+			<option>amet</option>
+			<option>consectetur</option>
+		</select>
+		</div>
+	</div>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<select name="selectbox" id="demoSelectbox" class="select">
+	<option>Lorem</option>
+	<option>ipsum</option>
+	<option>dolor</option>
+	<option>sit</option>
+	<option>amet</option>
+	<option>consectetur</option>
+</select>
+```
+{{/markdown}}
+</div>
+
+<p>Use <code>.select</code> class on <code>&lt;select&gt;</code> to style the selectbox. Without JavaScript however, styling a selectbox is very limited and so only the dropdown box will be styled. Dropdown menu will follow default native styles depending on your browser/platform and will differ in appearance. For consistent styling across all platforms, use the JavaScript method below.</p>
+
+<p>Use <code>.stretch</code> class to make selectbox width to 100%.</p>
+
+<br>
+
+<h3 id="section-forms-selectboxes">
+	Selectboxes (Selecter)
+
+	<a href="javascript.html"><span class="badge warning js-req">Requires JavaScript</span></a>
+</h3>
+<div class="demo-panel p-15" data-toggle-bg="toggle">
+<form>
+<div class="row">
+
+	<div class="col-2">
+		<label class="form-label" for="demoSelectbox1">Selectbox</label>
+		<select name="selectbox" id="demoSelectbox1" class="selectbox">
+			<option>Lorem</option>
+			<option>ipsum</option>
+			<option>dolor</option>
+		</select>
+	</div>
+	<div class="col-2">
+		<label class="form-label" for="demoSelectbox2">Selectbox 2</label>
+		<select name="selectbox2" id="demoSelectbox2" class="selectbox">
+			<optgroup label="Group 1">
+				<option>Lorem</option>
+				<option>ipsum</option>
+			</optgroup>
+			<optgroup label="Group 2">
+				<option>dolor</option>
+				<option>sit</option>
+				<option>amet</option>
+				<option>consectetur</option>
+			</optgroup>
+			<optgroup label="Group 3">
+				<option>adipisicing</option>
+				<option>elit</option>
+				<option>Distinctio</option>
+				<option>facere</option>
+				<option>nemo</option>
+				<option>facilis</option>
+				<option>ipsam</option>
+				<option>possimus</option>
+				<option>voluptatibus</option>
+				<option disabled>provident</option>
+				<option>minus</option>
+				<option disabled>necessitatibus</option>
+				<option>dolor</option>
+			</optgroup>
+		</select>
+	</div>
+
+</div>
+<div class="row">
+
+	<div class="col-2">
+		<label class="form-label" for="demoSelectbox3">Cover style</label>
+		<select name="selectbox3" id="demoSelectbox3" class="selectbox cover">
+			<option>Lorem</option>
+			<option selected>ipsum</option>
+			<option>dolor</option>
+			<option>sit</option>
+			<option>amet</option>
+			<option>consectetur</option>
+		</select>
+
+		<label class="form-label" for="demoSelectbox-disabled">Disabled</label>
+		<select name="selectbox-disabled" id="demoSelectbox-disabled" class="selectbox" disabled>
+			<option>Lorem</option>
+			<option>ipsum</option>
+			<option>dolor</option>
+			<option>sit</option>
+			<option>amet</option>
+			<option selected>consectetur</option>
+		</select>
+
+		<label class="form-label" for="demoSelectbox-dropup">Menu from Bottom (forced)</label>
+		<select name="selectbox-dropup" id="demoSelectbox-dropup" class="selectbox bottom">
+			<option>Lorem</option>
+			<option>ipsum</option>
+			<option selected>dolor</option>
+			<option>sit</option>
+			<option>amet</option>
+			<option>consectetur</option>
+		</select>
+	</div>
+	<div class="col-2">
+		<label class="form-label" for="demoSelectbox4">Select Multiple</label>
+		<select name="selectbox4" id="demoSelectbox4" class="selectbox" multiple>
+			<optgroup label="Group 1">
+				<option>Lorem</option>
+				<option selected>ipsum</option>
+			</optgroup>
+			<optgroup label="Group 2">
+				<option selected>dolor</option>
+				<option selected>sit</option>
+				<option>amet</option>
+				<option>consectetur</option>
+			</optgroup>
+		</select>
+	</div>
+
+</div>
+</form>
+</div>
+<div class="demo-code">
+{{#markdown}}
+``` html
+<select name="selectbox3" id="demoSelectbox3" class="selectbox cover bottom" multiple disabled>
+	<option>Lorem</option>
+	<option>ipsum</option>
+	<option>dolor</option>
+	<option>sit</option>
+	<option>amet</option>
+	<option>consectetur</option>
+</select>
+```
+{{/markdown}}
+</div>
+
+<p>To style a selectbox completely, JavaScript must be used to replace existing <code>&lt;select&gt;</code> because a <code>&lt;select&gt;</code> element is very limited in terms of CSS. Petal implemented selectbox styles using <a href="https://github.com/Formstone/Selecter">Selecter</a> jQuery Plugin by Ben Plum (MIT License). The javascript file is included as-is in <b>petal.js</b>, but the CSS code is completely customized to fit the Petal style.</p>
+
+<p>The Selecter plugin is not activated by default because of possible usability issues. To initialize, include the line of code below in your site page (change the selector to whichever selectbox you want to apply to).</p>
+
+<div class="demo-code">
+<pre><code class="javascript" data-lang="javascript">$(".myclass1 select.selectbox").selecter();</code></pre>
+</div>
+
+<p>Then append the <code>.selectbox</code> class to properly apply styles.</p>
+
+<p>Refer to the <a href="http://formstone.it/components/selecter">Selecter documentation page</a> for more options.</p>
+
+<p>If you are not planning to use Selecter in your project, you can turn it off by setting the <code>@include-selecter</code> variable to <code>false</code>. When this is switched off, the relevant code will not be included in compiled code thus saving some file size.</p>
+
+<br>
+
+<h5>Customizable options</h5>
+<div class="demo-code">
+{{#markdown}}
+``` less
+// selectbox
+@selectbox-border-width: @input-border-width; //2px
+@selectbox-border-radius: @input-border-radius;
+@selectbox-color: @primary-accent-color;
+@selectbox-disable-shadows: false;
+@include-selecter: true;
+```
+{{/markdown}}
+</div>
+
